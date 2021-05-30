@@ -41,7 +41,7 @@ public class EmployeeController {
 	}
 
 	// read
-	@RequestMapping("/get/{id}")
+	@GetMapping("/get/{id}")
 	public ResponseEntity<Employee> getEmplyee(@PathVariable("id") Long id) {
 		return new ResponseEntity<>(es.findEmployeeById(id), HttpStatus.OK);
 	}
@@ -56,7 +56,7 @@ public class EmployeeController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteEmplyee(@PathVariable("id") Long id) {
 		es.deleteEmployee(id);
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>("Success",HttpStatus.OK);
 	}
 
 }

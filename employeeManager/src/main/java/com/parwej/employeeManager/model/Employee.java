@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
+
 @Entity
 public class Employee implements Serializable{
 
@@ -23,7 +26,9 @@ public class Employee implements Serializable{
 	@Column(nullable = false, updatable = false)
 	private String employeeCode;
 	
-	
+	public Employee() {
+		
+	}
 	public Employee(String name,String email,String jobTitle,String phone,String imageUrl,String employeeCode) {
 		this.name=name;
 		this.email=email;
@@ -76,6 +81,10 @@ public class Employee implements Serializable{
 		this.employeeCode = employeeCode;
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Employee ID : "+this.id +", Name : "+this.name+", Employee Code : "+this.employeeCode;
+	}
 	
 }
