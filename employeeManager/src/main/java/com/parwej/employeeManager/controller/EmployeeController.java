@@ -2,6 +2,8 @@ package com.parwej.employeeManager.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -53,10 +55,11 @@ public class EmployeeController {
 	}
 
 	// delete
+	@Transactional
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteEmplyee(@PathVariable("id") Long id) {
 		es.deleteEmployee(id);
-		return new ResponseEntity<>("Success",HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }
